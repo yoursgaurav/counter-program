@@ -1,0 +1,129 @@
+@import "https://unpkg.com/open-props";
+@layer theme, base, utilities, components;
+
+@layer theme {
+  :root {
+    --text-1: light-dark(var(--gray-8), var(--gray-3));
+    --text-2: light-dark(var(--gray-7), var(--gray-4));
+    --surface-1: light-dark(var(--gray-1), var(--gray-11));
+    --surface-2: light-dark(var(--gray-3), var(--gray-10));
+    --surface-3: light-dark(var(--gray-5), var(--gray-9));
+    --surface-4: light-dark(var(--gray-7), var(--gray-8));
+  }
+}
+
+@layer base {
+  html {
+    box-sizing: border-box;
+  }
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: inherit;
+  }
+
+  body {
+    margin: 0;
+  }
+
+  button {
+    background-color: inherit;
+    color: inherit;
+    font-family: inherit;
+    font-size: inherit;
+  }
+
+  :root {
+    font-family: var(--font-rounded-sans);
+    line-height: var(--font-lineheight-3);
+    font-weight: var(--font-weight-4);
+
+    color-scheme: light dark;
+    color: var(--text-1);
+    background-color: var(--surface-1);
+
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+@layer utilities {
+  .wrapper {
+    --inline-space: var(--size-6);
+    --max-width: 75rem;
+
+    width: min(100% - calc(var(--inline-space) * 2), var(--max-width));
+    margin-inline: auto;
+  }
+}
+
+@layer components {
+  .counter-btn {
+    cursor: pointer;
+    border-color: transparent;
+    border-radius: var(--radius-drawn-1);
+    padding: var(--size-3) var(--size-4);
+    font-size: var(--font-size-2);
+    font-weight: var(--font-weight-6);
+    color: var(--surface-2);
+
+    &:hover {
+      outline: 4px auto -webkit-focus-ring-color;
+    }
+  }
+}
+
+body {
+  min-width: var(--size-14);
+  min-height: 100vh;
+  align-content: center;
+}
+
+.counter .wrapper {
+  --max-width: var(--size-15);
+
+  display: grid;
+  gap: var(--size-4);
+  justify-items: center;
+  padding: var(--size-7);
+  border-radius: var(--radius-drawn-1);
+  background-color: var(--surface-2);
+  outline: var(--border-size-1) solid var(--surface-4);
+}
+
+#count {
+  font-size: 4rem;
+  font-family: var(--font-monospace-code);
+  font-weight: var(--font-weight-9);
+}
+
+.controls {
+  display: grid;
+  gap: var(--size-3);
+  width: 100%;
+}
+
+#decreaseBtn {
+  background-color: var(--red-6);
+
+  &:hover {
+    border-color: var(--red-8);
+  }
+}
+#resetBtn {
+  background-color: var(--blue-6);
+
+  &:hover {
+    border-color: var(--blue-8);
+  }
+}
+#increaseBtn {
+  background-color: var(--green-6);
+
+  &:hover {
+    border-color: var(--green-8);
+  }
+}
